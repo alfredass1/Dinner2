@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Dinner</string>
+    <string name="app_title">winner winner chicken dinner</string>
+
+    <string name="login_username">Username:</string>
+    <string name="login_password">Password:</string>
+    <string name="login_login_btn">Login</string>
+    <string name="login_register_btn">Register</string>
+    <string name="login_invalid_credentials_message">Wrong! username or password.</string>
+    <string name="login_remember_me">Remember me</string>
+
+    <string name="search_new_entry_button">New Dinner</string>
+
+    <string name="new_entry_dinner_type">Dinner Type: </string>
+    <string name="new_entry_dinner_type_soup">Soup</string>
+    <string name="new_entry_dinner_type_main">Main</string>
+    <string name="new_entry_dinner_type_salad">Salad</string>
+    <string name="new_entry_dinner_delivery_type">Delivery: </string>
+    <string name="new_entry_dinner_delivery_type_no">No</string>
+    <string name="new_entry_dinner_delivery_type_yes">Yes</string>
+    <string name="new_entry_dinner_price">Price: </string>
+    <string name="new_entry_dinner_payment_type">Payment: </string>
+    <string-array name="new_entry_dinner_payment_type">
+        <item>Cash</item>
+        <item>Card</item>
+        <item>moQ</item>
+        <item>bitCoin</item>
+    </string-array>
+    <string name="new_entry_button">Create</string>
+    <string name="new_entry_database_info">Prašome palaukti, įrašas siunčiamas į duomenų bazę</string>
+
+</resources>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_dinner_type"
+                android:textColor="@color/colorText"
+                android:textSize="20dp" />
+
+            <CheckBox
+                android:id="@+id/checkSoup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_dinner_type_soup" />
+
+            <CheckBox
+                android:id="@+id/checkMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/new_entry_dinner_type_main" />
+
+            <CheckBox
+                android:id="@+id/checkSalad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_dinner_type_salad" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_dinner_delivery_type"
+                android:textColor="@color/colorText"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/new_entry_dinner_delivery_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/new_entry_dinner_delivery_type_yes" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="@string/new_entry_dinner_delivery_type_no" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_dinner_price"
+                android:textColor="@color/colorText"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/new_entry_dinner_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_dinner_payment_type"
+                android:textColor="@color/colorText"
+                android:textSize="20dp" />
+
+            <Spinner
+                android:id="@+id/payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/new_entry_dinner_payment_type" />
+
+            <Button
+                android:id="@+id/btn_create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="@string/new_entry_button" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
