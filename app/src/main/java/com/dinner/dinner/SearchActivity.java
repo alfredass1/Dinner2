@@ -19,6 +19,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -240,7 +241,7 @@ public class SearchActivity extends AppCompatActivity {
                     }
 
                     // Setup and Handover data to recyclerview
-                    mRVDinner = (RecyclerView) findViewById(R.id.pokemonList);
+                    mRVDinner = (RecyclerView) findViewById(R.id.dinnerList);
                     mAdapter = new AdapterDinner(SearchActivity.this, data);
                     mRVDinner.setAdapter(mAdapter);
                     mRVDinner.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
