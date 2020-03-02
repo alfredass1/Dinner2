@@ -1,6 +1,8 @@
 package com.dinner.dinner;
 
-public class Dinner {
+import java.io.Serializable;
+
+public class Dinner implements Serializable {
     private int id;
     private String dinnerType;
     private String delivery;

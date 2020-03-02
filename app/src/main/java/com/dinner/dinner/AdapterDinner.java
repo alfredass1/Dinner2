@@ -89,10 +89,10 @@ public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             Dinner dinner = data.get(itemPosition);
 
-            Toast.makeText(context, dinner.getDinnerType() + "" + dinner.getPrice(), Toast.LENGTH_SHORT).show();
-            //intent intent = new Intent(context, NewEntryActivity.class);
-            //intent.putExtra(ENTRY, dinner);
-            //context.startActivity(intent);
+            Toast.makeText(context, dinner.getDinnerType() + " " + dinner.getPrice(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, NewEntryActivity.class);
+            intent.putExtra(ENTRY, dinner);
+            context.startActivity(intent);
         }
 
     }

@@ -22,10 +22,30 @@ public class NewEntryActivity extends AppCompatActivity {
 
     public static final String DB_URL = "http://forfuncom.epizy.com/mobile/db.php";
 
+    Dinner dinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_entry);
+
+        Intent intent = getIntent();
+        dinner = (Dinner) intent.getSerializableExtra(AdapterDinner.ENTRY);
+
+        if (dinner == null) {
+
+            dinner = new Dinner(
+                -1,
+                getResources().getString(R.string.new_entry_dinner_type_main),
+                getResources().getString(R.string.new_entry_dinner_delivery_type_no),
+                0,
+                getResources().getString(R.string.new_entry_dinner_payment_type).toString()
+
+
+            );
+        }else{
+
+        }
+
 
         Button newEntryBtn = findViewById(R.id.btn_create);
         final CheckBox soupCB = findViewById(R.id.checkSoup);
@@ -68,6 +88,7 @@ public class NewEntryActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();*/
             }
         });
+
 
     }
 
