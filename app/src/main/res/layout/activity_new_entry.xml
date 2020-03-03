@@ -15,6 +15,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,7 +36,6 @@
                 android:id="@+id/checkMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/new_entry_dinner_type_main" />
 
             <CheckBox
@@ -41,6 +44,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/new_entry_dinner_type_salad" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,10 +72,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="false"
                     android:text="@string/new_entry_dinner_delivery_type_no" />
 
             </RadioGroup>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -84,6 +93,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="number" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,13 +110,41 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/new_entry_dinner_payment_type" />
 
-            <Button
-                android:id="@+id/btn_create"
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:text="@string/new_entry_button" />
+                android:orientation="horizontal"
+                android:weightSum="3">
 
+                <Button
+                    android:id="@+id/btn_create"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorGreen"
+                    android:text="@string/new_entry_insert" />
+
+                <Button
+                    android:id="@+id/btn_update"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorYellow"
+                    android:text="@string/new_entry_update" />
+
+                <Button
+                    android:id="@+id/btn_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorRed"
+                    android:text="@string/new_entry_delete" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

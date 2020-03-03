@@ -20,66 +20,77 @@ import java.util.HashMap;
 
 public class NewEntryActivity extends AppCompatActivity {
 
-    public static final String DB_URL = "http://forfuncom.epizy.com/mobile/db.php";
+    public static final String INSERT_URL = "http://furfuncom.epizy.com/mobile/db.php";
 
     Dinner dinner;
+
+    CheckBox soupCB;
+    CheckBox saladCB;
+    CheckBox mainCB;
+
+    RadioGroup deliveryRG;
+
+    EditText priceET;
+
+    Spinner paymentSpin;
+
+    Button newEntryBtn;
+    Button updateEntryBtn;
+    Button deleteEntryBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_entry);
 
+        // checking if it's new or existing entry
         Intent intent = getIntent();
         dinner = (Dinner) intent.getSerializableExtra(AdapterDinner.ENTRY);
 
-        if (dinner == null) {
+        newEntryBtn = findViewById(R.id.btn_create);
+        updateEntryBtn = findViewById(R.id.btn_update);
+        deleteEntryBtn = findViewById(R.id.btn_delete);
+
+        if (dinner == null) { // new entry- values by default
+            setTitle(R.string.new_entry_meniu_title);
 
             dinner = new Dinner(
-                -1,
-                getResources().getString(R.string.new_entry_dinner_type_main),
-                getResources().getString(R.string.new_entry_dinner_delivery_type_no),
-                0,
-                getResources().getString(R.string.new_entry_dinner_payment_type).toString()
-
-
+                    -1, // because it's not in db
+                    getResources().getString(R.string.new_entry_dinner_type_main),
+                    getResources().getString(R.string.new_entry_dinner_delivery_type_no),
+                    0,
+                    getResources().getStringArray(R.array.new_entry_dinner_payment_type).toString()
             );
-        }else{
 
+            updateEntryBtn.setEnabled(false);
+            deleteEntryBtn.setEnabled(false);
+            newEntryBtn.setEnabled(true);
+        } else { // existing entry- values by entry
+            setTitle(R.string.existing_entry_meniu_title);
+
+            //TODO: implement update, delete buttons
+            updateEntryBtn.setEnabled(true);
+            deleteEntryBtn.setEnabled(true);
+            newEntryBtn.setEnabled(false);
         }
 
+        soupCB = findViewById(R.id.checkSoup);
+        saladCB = findViewById(R.id.checkSalad);
+        mainCB = findViewById(R.id.checkMain);
 
-        Button newEntryBtn = findViewById(R.id.btn_create);
-        final CheckBox soupCB = findViewById(R.id.checkSoup);
-        final CheckBox saladCB = findViewById(R.id.checkSalad);
-        final CheckBox mainCB = findViewById(R.id.checkMain);
-        final RadioGroup deliveryRG = findViewById(R.id.new_entry_dinner_delivery_group);
-        final EditText priceET = findViewById(R.id.new_entry_dinner_price);
-        final Spinner paymentSpin = findViewById(R.id.payment);
+        deliveryRG = findViewById(R.id.new_entry_dinner_delivery_group);
+
+        priceET = findViewById(R.id.new_entry_dinner_price);
+
+        paymentSpin = findViewById(R.id.payment);
+
+        setDataFromEntry(dinner);
 
         newEntryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String dinnerTypes = "";
-                if (soupCB.isChecked()) {
-                    dinnerTypes = dinnerTypes + soupCB.getText().toString() + " ";
-                }
-                if (saladCB.isChecked()) {
-                    dinnerTypes = dinnerTypes + saladCB.getText().toString() + " ";
-                }
-                if (mainCB.isChecked()) {
-                    dinnerTypes = dinnerTypes + mainCB.getText().toString() + " ";
-                }
-
-                int selectedDeliveryType = deliveryRG.getCheckedRadioButtonId();
-                RadioButton deliveryType = findViewById(selectedDeliveryType);
-                String selectedDeliveryTypeBtnName = deliveryType.getText().toString();
-
-                double price = Double.parseDouble(priceET.getText().toString());
-
-                String payment = String.valueOf(paymentSpin.getSelectedItem());
-
-                Dinner dinner = new Dinner(dinnerTypes, selectedDeliveryTypeBtnName, price, payment);
-
-                insertToDB(dinner);
+                Dinner dinnerFromForm = getDataFromForm();
+                insertToDB(dinnerFromForm);
                 /*Toast.makeText(NewEntryActivity.this,
                         "Dinner type: " + dinner.getDinnerType() + "\n" +
                                 "Delivery type: " + dinner.getDelivery() + "\n" +
@@ -90,6 +101,83 @@ public class NewEntryActivity extends AppCompatActivity {
         });
 
 
+        updateEntryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(NewEntryActivity.this,
+                        "Needs to be implemented",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        deleteEntryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(NewEntryActivity.this,
+                        "Needs to be implemented",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void setDataFromEntry(Dinner dinner) {
+        boolean isChecked = false;
+        if (dinner.getDinnerType().
+                contains(getResources().getString(R.string.new_entry_dinner_type_soup))) {
+            soupCB.setChecked(true);
+            isChecked = true;
+        }
+        if (dinner.getDinnerType().
+                contains(getResources().getString(R.string.new_entry_dinner_type_salad))) {
+            saladCB.setChecked(true);
+            isChecked = true;
+        }
+        if (dinner.getDinnerType().
+                contains(getResources().getString(R.string.new_entry_dinner_type_main))) {
+            mainCB.setChecked(true);
+            isChecked = true;
+        }
+        if (!isChecked) { // was new entry - nothing to check
+            mainCB.setChecked(true); //// lets say it will be default value for new entry
+        }
+
+        if(!dinner.getDelivery(). // delivery - no
+                equalsIgnoreCase(getResources().getString(R.string.new_entry_dinner_delivery_type_no))){
+            ((RadioButton)deliveryRG.getChildAt(0)).setChecked(true);
+        } else { // delivery - yes
+            ((RadioButton)deliveryRG.getChildAt(1)).setChecked(true);
+        }
+
+        priceET.setText(String.valueOf(dinner.getPrice()));
+
+        //TODO: spinner
+
+    }
+
+    private Dinner getDataFromForm() {
+        String dinnerTypes = "";
+        if (soupCB.isChecked()) {
+            dinnerTypes = dinnerTypes + soupCB.getText().toString() + " ";
+        }
+        if (saladCB.isChecked()) {
+            dinnerTypes = dinnerTypes + saladCB.getText().toString() + " ";
+        }
+        if (mainCB.isChecked()) {
+            dinnerTypes = dinnerTypes + mainCB.getText().toString() + " ";
+        }
+
+        int selectedDeliveryType = deliveryRG.getCheckedRadioButtonId();
+        RadioButton deliveryType = findViewById(selectedDeliveryType);
+        String selectedDeliveryTypeBtnName = deliveryType.getText().toString();
+
+        double price = Double.parseDouble(priceET.getText().toString());
+
+        String payment = String.valueOf(paymentSpin.getSelectedItem());
+
+        Dinner dinner = new Dinner(dinnerTypes, selectedDeliveryTypeBtnName, price, payment);
+
+        return dinner;
     }
 
     private void insertToDB (Dinner dinner){
@@ -116,7 +204,7 @@ public class NewEntryActivity extends AppCompatActivity {
                 pietus.put("payment", strings[3]);
                 pietus.put("action", "insert");
 
-                String result = db.sendPostRequest(DB_URL, pietus);
+                String result = db.sendPostRequest(INSERT_URL, pietus);
 
                 return result;
             }

@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setTitle(R.string.login_meniu_title);
 
         final EditText username = findViewById(R.id.username);
         final EditText password = findViewById(R.id.password);

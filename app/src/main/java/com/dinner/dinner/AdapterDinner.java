@@ -2,7 +2,6 @@ package com.dinner.dinner;
 
 import android.content.Context;
 import android.content.Intent;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,7 +88,6 @@ public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             Dinner dinner = data.get(itemPosition);
 
-            Toast.makeText(context, dinner.getDinnerType() + " " + dinner.getPrice(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context, NewEntryActivity.class);
             intent.putExtra(ENTRY, dinner);
             context.startActivity(intent);

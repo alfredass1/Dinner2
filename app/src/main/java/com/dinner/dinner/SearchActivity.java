@@ -19,7 +19,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +53,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        Button newEntryButton = findViewById(R.id.new_entry_button);
+       Button newEntryButton = findViewById(R.id.new_entry_button);
         newEntryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +130,7 @@ public class SearchActivity extends AppCompatActivity {
             try {
 
                 // Enter URL address where your php file resides
-                url = new URL(NewEntryActivity.DB_URL);
+                url = new URL(NewEntryActivity.INSERT_URL);
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -236,7 +235,7 @@ public class SearchActivity extends AppCompatActivity {
                                 json_data.getDouble("price"),
                                 json_data.getString("payment")
                         );
-                        Log.e("dinner",dinner.getDinnerType()+ " "+ dinner.getPrice());
+                        Log.e("dinner2",dinner.getDinnerType()+ " "+ dinner.getPrice());
                         data.add(dinner);
                     }
 
@@ -258,3 +257,4 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 }
+

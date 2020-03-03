@@ -8,6 +8,7 @@
     <string name="login_register_btn">Register</string>
     <string name="login_invalid_credentials_message">Wrong! username or password.</string>
     <string name="login_remember_me">Remember me</string>
+    <string name="login_meniu_title">Login</string>
 
     <string name="search_new_entry_button">New Dinner</string>
 
@@ -26,7 +27,10 @@
         <item>moQ</item>
         <item>bitCoin</item>
     </string-array>
-    <string name="new_entry_button">Create</string>
-    <string name="new_entry_database_info">Prašome palaukti, įrašas siunčiamas į duomenų bazę</string>
-
+    <string name="new_entry_insert">Create</string>
+    <string name="new_entry_database_info">Please wait- sending to db</string>
+    <string name="new_entry_update">Update</string>
+    <string name="new_entry_delete">Delete</string>
+    <string name="new_entry_meniu_title">New Dinner</string>
+    <string name="existing_entry_meniu_title">Existing Dinner</string>
 </resources>
